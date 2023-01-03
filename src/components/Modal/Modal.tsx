@@ -1,0 +1,160 @@
+import { useSelector } from "react-redux";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  Typography,
+  Button,
+  DialogActions,
+  Box,
+  TextField,
+} from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
+import {
+  selectModalState,
+  selectOpenModalState,
+} from "../../redux/slices/modal";
+import { ModalType } from "../../redux/types/modal";
+
+import { useStyles } from "./style";
+
+interface ModalFooterProps {
+  onSubmit?: (params: any) => void;
+  onCancel?: (params: any) => void;
+  onClickFollow?: (params:any) => void;
+}
+
+const ModalHeader = (props: any) => {
+  const styles = useStyles();
+  return (
+    <DialogTitle className={styles.dialogTitle}>
+      <Typography>{props.title}</Typography>
+      <IconButton className={styles.iconButton} onClick={props.onCancel}>
+        <CloseIcon sx={{ fontSize: 20 }} color="inherit" />
+      </IconButton>
+    </DialogTitle>
+  );
+};
+
+const ModalFooter = ({ onSubmit, onCancel }: ModalFooterProps) => {
+  return (
+    <DialogActions>
+      <Button variant="contained" onClick={onSubmit}>
+        <Typography component="span" color="secondary">
+          Так
+        </Typography>
+      </Button>
+      <Button variant="outlined" onClick={onCancel}>
+        <Typography component="span">Ні</Typography>
+      </Button>
+    </DialogActions>
+  );
+};
+
+export const Modal = () => {
+  const modalActiveType = useSelector(selectOpenModalState);
+  const modalProps = useSelector(selectModalState(modalActiveType));
+  const styles = useStyles();
+
+  if (!modalActiveType) {
+    return null;
+  }
+
+  const modalsByType: { [keys in ModalType]: JSX.Element } = {
+    
+    [ModalType.Error]: (
+      <>
+        <ModalHeader title="Виправте ці помилки" onCancel={modalProps?.onCancel} />
+        <DialogContent dividers>
+          {modalProps?.payload?.errors?.map((er: any, index: number) => <Typography key={index}>{er.msg}</Typography>)}
+        </DialogContent>
+      </>
+    ),
+
+    [ModalType.Logout]: (
+      <>
+        <ModalHeader title="Logout" onCancel={modalProps?.onCancel} />
+        <DialogContent dividers>
+          <Typography>Ви дійсно хочете вийти?</Typography>
+        </DialogContent>
+        <ModalFooter
+          onCancel={modalProps?.onCancel}
+          onSubmit={modalProps?.onSubmit}
+        />
+      </>
+    ),
+
+    [ModalType.UpdateUserData]: (
+      <>
+        <ModalHeader title="Редагувати профіль" onCancel={modalProps?.onCancel} />
+        <DialogContent dividers>
+          <Typography>Ви дійсно хочете змінити інформацію?</Typography>
+        </DialogContent>
+        <ModalFooter
+          onCancel={modalProps?.onCancel}
+          onSubmit={modalProps?.onSubmit}
+        />
+      </>
+    ),
+
+
+    [ModalType.DeleteUser]: (
+      <>
+        <ModalHeader title="Видалити профіль" onCancel={modalProps?.onCancel} />
+        <DialogContent dividers>
+          <Typography>
+            Ви дійсно хочете видалити свій профіль? Після видалення інформація
+            щезне та не підлягатиме відневленню
+          </Typography>
+        </DialogContent>
+        <ModalFooter
+          onCancel={modalProps?.onCancel}
+          onSubmit={modalProps?.onSubmit}
+        />
+      </>
+    ),
+
+    [ModalType.Connect]: (
+      <>
+        <ModalHeader
+          title="Зв'язатись з нами"
+          onCancel={modalProps?.onCancel}
+        />
+        <DialogContent dividers className={styles.connectDialogContent}>
+          <TextField
+            name="subject"
+            style={{
+              width: 350,
+            }}
+            size="small"
+            placeholder="Тема"
+            onChange={modalProps?.payload?.handleSubject}
+          />
+          <TextField
+            name="message"
+            style={{
+              width: 350,
+              marginTop: 15
+            }}
+            multiline
+            maxRows={7}
+            rows={7}
+            placeholder="Повідомлення..."
+            onChange={modalProps?.payload?.handleMessage}
+          />
+        </DialogContent>
+        <ModalFooter
+          onCancel={modalProps?.onCancel}
+          onSubmit={modalProps?.onSubmit}
+        />
+      </>
+    ),
+  };
+
+  return (
+    <Dialog open={modalProps?.isOpen ?? false} onClose={modalProps?.onCancel}>
+      {modalActiveType && modalsByType[modalActiveType]}
+    </Dialog>
+  );
+};
