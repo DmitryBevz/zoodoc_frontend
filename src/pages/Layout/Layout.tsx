@@ -1,5 +1,4 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 
 import Grid from "@mui/material/Grid";
@@ -10,8 +9,6 @@ import { useStyles } from "./styles";
 
 export const Layout = () => {
   const styles = useStyles()
-  const dispatch = useDispatch<any>();
-
 
   return (
     <Container maxWidth="lg">
