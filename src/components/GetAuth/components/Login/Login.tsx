@@ -8,8 +8,6 @@ import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 
-import { useStyles } from "./styles";
-
 import { fetchAuth } from "../../../../redux/slices/auth";
 import { selectIsAuth } from "../../../../redux/slices/selectors/authSelectors";
 import { IUserLoginData } from "../../../interfaces/auth/IAuth";
@@ -17,6 +15,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../../../validation/schemas/auth/loginSchema";
 import { closeModal, openModal } from "../../../../redux/slices/modal";
 import { ModalType } from "../../../../redux/types/modal";
+
+import { useStyles } from "./styles";
 
 export const Login = () => {
   const styles = useStyles();

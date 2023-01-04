@@ -11,7 +11,7 @@ export enum ModalType {
   UpdateUserData = "UpdateUserData",
   DeleteUser = "DeleteUser",
   Connect = "Connect",
-    Error = "Error"
+  Error = "Error"
 }
 
 export interface ModalState extends ModalParams {
