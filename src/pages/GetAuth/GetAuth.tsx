@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Link, Navigate } from "react-router-dom";
 
 import { Typography, Button, Box, IconButton } from "@mui/material";
 
@@ -11,10 +12,17 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import AppleIcon from "@mui/icons-material/Apple";
 import SearchIcon from "@mui/icons-material/Search";
 
+import { selectIsUser } from "../../redux/slices/user/selectors/userSelectors";
+
 import { useStyles } from "./styles";
 
 export const GetAuth = () => {
   const styles = useStyles();
+  const isAuth = useSelector(selectIsUser);
+
+  if (isAuth) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <Box className={styles.wrapper}>

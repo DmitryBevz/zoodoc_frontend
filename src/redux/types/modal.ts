@@ -10,7 +10,6 @@ export enum ModalType {
   Logout = "Logout",
   UpdateUserData = "UpdateUserData",
   DeleteUser = "DeleteUser",
-  Connect = "Connect",
   Error = "Error"
 }
 

@@ -14,19 +14,19 @@ import {
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 
-import { logout } from "../../../../redux/slices/auth";
-import {selectUserData} from "../../../../redux/slices/selectors/authSelectors";
+import { logout } from "../../../../redux/slices/auth/auth";
 import { closeModal, openModal } from "../../../../redux/slices/modal";
 import { ModalType } from "../../../../redux/types/modal";
 
 import { props, useStyles } from "./styles";
+import { selectUserData } from "../../../../redux/slices/user/selectors/userSelectors";
 
 export const AccountMenu = () => {
   const styles = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const dispatch = useDispatch<any>();
   const userData = useSelector(selectUserData);
-  const userInitials = userData?.fullName?.slice(0, 1);
+  const userInitials = userData?.firstName?.slice(0, 1);
   const open = Boolean(anchorEl);
 
   const handleClick = (event: any) => {
@@ -45,7 +45,7 @@ export const AccountMenu = () => {
         },
         onSubmit: () => {
           dispatch(logout(null));
-          window.localStorage.removeItem("tokenBlog");
+          window.localStorage.removeItem("zoodocToken");
           dispatch(closeModal(ModalType.Logout));
         },
       })
@@ -64,11 +64,11 @@ export const AccountMenu = () => {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            {!userData!.avatarUrl ? (
+            {/* {!userData!.avatarUrl ? (
               <Avatar className={styles.avatar}>{userInitials}</Avatar>
             ) : (
               <Avatar className={styles.avatar} src={userData!.avatarUrl.location} />
-            )}
+            )} */}
           </IconButton>
         </Tooltip>
       </Box>

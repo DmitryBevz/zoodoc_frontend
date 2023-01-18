@@ -6,8 +6,6 @@ import {
   Typography,
   Button,
   DialogActions,
-  Box,
-  TextField,
 } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
@@ -107,42 +105,6 @@ export const Modal = () => {
             Ви дійсно хочете видалити свій профіль? Після видалення інформація
             щезне та не підлягатиме відневленню
           </Typography>
-        </DialogContent>
-        <ModalFooter
-          onCancel={modalProps?.onCancel}
-          onSubmit={modalProps?.onSubmit}
-        />
-      </>
-    ),
-
-    [ModalType.Connect]: (
-      <>
-        <ModalHeader
-          title="Зв'язатись з нами"
-          onCancel={modalProps?.onCancel}
-        />
-        <DialogContent dividers className={styles.connectDialogContent}>
-          <TextField
-            name="subject"
-            style={{
-              width: 350,
-            }}
-            size="small"
-            placeholder="Тема"
-            onChange={modalProps?.payload?.handleSubject}
-          />
-          <TextField
-            name="message"
-            style={{
-              width: 350,
-              marginTop: 15
-            }}
-            multiline
-            maxRows={7}
-            rows={7}
-            placeholder="Повідомлення..."
-            onChange={modalProps?.payload?.handleMessage}
-          />
         </DialogContent>
         <ModalFooter
           onCancel={modalProps?.onCancel}

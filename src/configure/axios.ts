@@ -1,13 +1,33 @@
 import axios from "axios";
+import { checkStatusCode } from "./utils/checkStatusCode";
 
-const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+const baseUrl = process.env.REACT_APP_API_URL;
+
+const axiosInstance = axios.create({
+  baseURL: `${baseUrl}/`,
 });
 
-instance.interceptors.request.use((config: any) => {
-  config.headers.Authorization = window.localStorage.getItem("zoodocToken");
+axiosInstance.interceptors.response.use(
+  (response) => {
+    const statusCode = checkStatusCode(response.status);
+    if (statusCode) {
+      return response;
+    }
+  },
+  (error) => {
+    const statusCode = checkStatusCode(error.response.status);
+    if (!statusCode) {
+      throw new Error(error.response.data.ErrorMessage);
+    }
+  }
+);
+
+axiosInstance.interceptors.request.use((config: any) => {
+  config.headers.Authorization = `Bearer ${window.localStorage.getItem(
+    "zoodocToken"
+  )}`;
 
   return config;
 });
 
-export default instance;
+export default axiosInstance;

@@ -1,3 +1,4 @@
 export { Home } from "./Home/Home";
-export { UserPage } from "./UserPage/UserPage";
-export { EditProfile } from "./UserPage/components/Edit/EditProfile";
+export { GetAuth } from "./GetAuth/GetAuth";
+export { Login } from "./GetAuth/components/Login/Login";
+export { Registration } from "./GetAuth/components/Registration/Registration";
