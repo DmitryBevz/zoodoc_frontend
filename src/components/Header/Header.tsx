@@ -2,22 +2,17 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 
-import { selectIsAuth } from "../../redux/slices/selectors/authSelectors";
-
 import { Container, Box, Drawer } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import MenuItem from "@mui/material/MenuItem";
 
-import { AccountMenu } from "./component/AccountMenu/AccountMenu";
-import { CreatePost } from "./component/CreatePost/CreatePost";
 import { SideMenu } from "../SideMenu/SideMenu";
 
 import { useStyles } from "./styles";
 
 export const Header = () => {
   const styles = useStyles();
-  const isAuth = useSelector(selectIsAuth);
   const [open, setOpen] = React.useState(false);
   const location = useLocation();
   const urlPath = location.pathname === "/sign-in" || location.pathname === "/login" || location.pathname === "/register";
@@ -56,12 +51,12 @@ export const Header = () => {
             </Link>
           )}
           <Box className={styles.buttons}>
-            {isAuth && (
+            {/* {isAuth && (
               <Box style={{ display: "flex", alignItems: "center" }}>
                 <CreatePost />
                 <AccountMenu />
               </Box>
-            )}
+            )} */}
           </Box>
         </Box>
       </Container>

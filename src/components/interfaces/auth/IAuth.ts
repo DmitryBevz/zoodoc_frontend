@@ -1,49 +1,35 @@
 import { IDocument } from "../document/IDocumend";
 
+export enum Role {
+  Doctor = 0,
+  Patient = 1,
+}
+
 export interface IAuthData {
-  id?: string;
-  city?: string;
-  email?: string;
-  fullName?: string;
-  phoneNumber?: string;
-  likedPosts?: string[];
-  savedPosts?: string[];
-  avatarUrl?: IDocument;
-  wallpaperUrl?: IDocument;
-  followers?: string[];
-  bio?: string;
-  youtube?: string;
-  instagram?: string;
-  website?: string;
+  email: string;
+  firstName: string;
+  role: string;
+  lastName: string;
+  password: string;
+  phone: string;
+  roles: Role[];
 }
 
 export interface IUserLoginData {
-  email: string;
+  login: string;
   password: string;
 }
 
 export interface IUserRegisterData {
   email: string;
-  userName: string;
+  firstName: string;
   role: number;
   lastName: string;
   password: string;
-  phoneNumber: string;
+  phone: string;
 }
 
-export interface AuthStateProps {
+export interface IAuthStateProps {
   data: IAuthData | null;
   status: string;
-  user: {
-    data: IAuthData | null;
-    status: string;
-  };
-}
-
-export interface IWallpaperUpload {
-  wallpaperUrl: IDocument;
-}
-
-export interface IAvatarUpload {
-  avatarUrl: IDocument;
 }

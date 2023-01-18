@@ -10,9 +10,9 @@ import {
 
 export const registrationSchema = yup.object().shape({
   role: role.required(),
-  userName: fullNameField.required(),
+  firstName: fullNameField.required(),
   lastName: lastNameField.required(),
   email: emailField.required(),
-  phoneNumber: phoneNumberField,
+  phone: phoneNumberField,
   password: passwordField.required(),
 });

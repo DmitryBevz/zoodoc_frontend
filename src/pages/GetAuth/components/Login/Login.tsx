@@ -8,28 +8,28 @@ import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 
-import { fetchAuth } from "../../../../redux/slices/auth";
-import { selectIsAuth } from "../../../../redux/slices/selectors/authSelectors";
-import { IUserLoginData } from "../../../interfaces/auth/IAuth";
+import { setLogin } from "../../../../redux/slices/auth/auth";
+import { IUserLoginData } from "../../../../components/interfaces/auth/IAuth";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema } from "../../../validation/schemas/auth/loginSchema";
+import { loginSchema } from "../../../../components/validation/schemas/auth/loginSchema";
 import { closeModal, openModal } from "../../../../redux/slices/modal";
 import { ModalType } from "../../../../redux/types/modal";
 
 import { useStyles } from "./styles";
+import { selectIsUser } from "../../../../redux/slices/user/selectors/userSelectors";
 
 export const Login = () => {
   const styles = useStyles();
   const dispatch = useDispatch<any>();
-  const isAuth = useSelector(selectIsAuth);
+  const isAuth = useSelector(selectIsUser);
 
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm({
+  } = useForm<IUserLoginData>({
     defaultValues: {
-      email: "",
+      login: "",
       password: "",
     },
     mode: "onChange",
@@ -37,7 +37,7 @@ export const Login = () => {
   });
 
   const onSubmit = async (values: IUserLoginData) => {
-    const data = await dispatch(fetchAuth(values));
+    const data = await dispatch(setLogin(values));
     if (!data.payload) {
       dispatch(
         openModal({
@@ -59,6 +59,9 @@ export const Login = () => {
     }
   };
 
+  console.log(isAuth);
+  
+
   if (isAuth) {
     return <Navigate to="/" />;
   }
@@ -73,9 +76,9 @@ export const Login = () => {
         <TextField
           className={styles.field}
           label="Пошта"
-          error={Boolean(errors.email?.message)}
-          helperText={errors.email?.message}
-          {...register("email")}
+          error={Boolean(errors.login?.message)}
+          helperText={errors.login?.message}
+          {...register("login")}
           fullWidth
         />
         <TextField

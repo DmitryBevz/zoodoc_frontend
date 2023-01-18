@@ -16,11 +16,10 @@ import {
 import MedicalServicesOutlinedIcon from "@mui/icons-material/MedicalServicesOutlined";
 import PetsOutlinedIcon from "@mui/icons-material/PetsOutlined";
 
-import { setRegister } from "../../../../redux/slices/auth";
-import { selectIsAuth } from "../../../../redux/slices/selectors/authSelectors";
+import { setRegister } from "../../../../redux/slices/auth/auth";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { registrationSchema } from "../../../validation/schemas/auth/registrationSchema";
-import { IUserRegisterData } from "../../../interfaces/auth/IAuth";
+import { registrationSchema } from "../../../../components/validation/schemas/auth/registrationSchema";
+import { IUserRegisterData } from "../../../../components/interfaces/auth/IAuth";
 import { useToast } from "../../../../hooks/useToast";
 
 import { useStyles } from "./styles";
@@ -28,8 +27,7 @@ import { useStyles } from "./styles";
 export const Registration = () => {
   const dispatch = useDispatch<any>();
   const styles = useStyles();
-  const isAuth = useSelector(selectIsAuth);
-  const [role, setRole] = React.useState(1);
+  const [role, setRole] = React.useState<number>(1);
   const notify = useToast();
 
   const handleChangeRole = (event: React.SyntheticEvent, newValue: number) => {
@@ -43,10 +41,10 @@ export const Registration = () => {
   } = useForm<IUserRegisterData>({
     defaultValues: {
       role: role,
-      userName: "",
+      firstName: "",
       lastName: "",
       email: "",
-      phoneNumber: "",
+      phone: "",
       password: "",
     },
     mode: "onChange",
@@ -58,14 +56,10 @@ export const Registration = () => {
   const onSubmit = async (values: IUserRegisterData) => {
     const data = await dispatch(setRegister({ ...values, role }));
 
-    if ("token" in data.payload) {
-      window.localStorage.setItem("zoodocToken", data.payload.token);
+    if ("token" in data.payload.token) {
+      window.localStorage.setItem("zoodocToken", data.payload.token.token);
     }
   };
-
-  if (isAuth) {
-    return <Navigate to="/" />;
-  }
 
   return (
     <Paper classes={{ root: styles.root }}>
@@ -94,9 +88,9 @@ export const Registration = () => {
           <TextField
             label="Ім'я"
             fullWidth
-            error={!!errors.userName?.message}
-            helperText={errors.userName?.message}
-            {...register("userName")}
+            error={!!errors.firstName?.message}
+            helperText={errors.firstName?.message}
+            {...register("firstName")}
           />
           <TextField
             label="Прізвище"
@@ -108,9 +102,9 @@ export const Registration = () => {
           <TextField
             label="Телефон"
             fullWidth
-            error={!!errors.phoneNumber?.message}
-            helperText={errors.phoneNumber?.message}
-            {...register("phoneNumber")}
+            error={!!errors.phone?.message}
+            helperText={errors.phone?.message}
+            {...register("phone")}
           />
           <TextField
             label="Пошта"

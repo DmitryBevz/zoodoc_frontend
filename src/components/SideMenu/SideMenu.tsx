@@ -7,11 +7,10 @@ import Typography from "@mui/material/Typography";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 import GarageOutlinedIcon from "@mui/icons-material/GarageOutlined";
 
-import { selectUserData } from "../../redux/slices/selectors/authSelectors";
-
 import { SideBlock } from "../SideBlock/SideBlock";
 
 import { useStyles } from "./styles";
+import { selectUserData } from "../../redux/slices/user/selectors/userSelectors";
 
 export const SideMenu = () => {
   const styles = useStyles();

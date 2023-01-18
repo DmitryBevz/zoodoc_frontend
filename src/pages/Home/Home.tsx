@@ -10,10 +10,10 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 
 import { NoPost } from "./components/noPost/NoPost";
-import { selectUserData } from "../../redux/slices/selectors/authSelectors";
 
 import blog from "../../assets/img/blog.png"
 import { useStyles } from "./style";
+import { selectUserData } from "../../redux/slices/user/selectors/userSelectors";
 
 export const Home = () => {
   const styles = useStyles();
