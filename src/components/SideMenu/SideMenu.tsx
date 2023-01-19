@@ -23,10 +23,7 @@ export const SideMenu = () => {
             <Box>
               <ListOutlinedIcon />
               <Hidden smDown>
-                <Typography
-                  className={styles.sideMenuListItemLabel}
-                  variant="h6"
-                >
+                <Typography className={styles.sideMenuListItemLabel} variant="h6">
                   Новини
                 </Typography>
               </Hidden>
@@ -42,10 +39,7 @@ export const SideMenu = () => {
                 <Box>
                   <GarageOutlinedIcon />
                   <Hidden smDown>
-                    <Typography
-                      className={styles.sideMenuListItemLabel}
-                      variant="h6"
-                    >
+                    <Typography className={styles.sideMenuListItemLabel} variant="h6">
                       Мої тварини
                     </Typography>
                   </Hidden>

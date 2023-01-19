@@ -21,28 +21,19 @@ export const Footer = () => {
     <Box className={styles.container}>
       <Box className={styles.links}>
         <Typography>
-          <MuiLink
-            href="https://www.instagram.com/"
-            target="_blank"
-            className={styles.link}
-          >
+          <MuiLink href="https://www.instagram.com/" target="_blank" className={styles.link}>
             Instagram
           </MuiLink>
         </Typography>
         <Typography className={styles.middot}>|</Typography>
         <Typography>
-          <Typography
-            component="span"
-            className={styles.link}
-          >
+          <Typography component="span" className={styles.link}>
             Зв'язатись з нами
           </Typography>
         </Typography>
       </Box>
       <Box className={styles.info}>
-        <Typography className={styles.description}>
-          © ZOODOC, {new Date().getFullYear()}
-        </Typography>
+        <Typography className={styles.description}>© ZOODOC, {new Date().getFullYear()}</Typography>
       </Box>
     </Box>
   );

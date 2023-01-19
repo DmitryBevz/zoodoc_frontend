@@ -24,10 +24,7 @@ export const useStyles = {
       border: "6px solid #fff",
     },
     "&.Mui-disabled .MuiSwitch-thumb": {
-      color:
-        theme.palette.mode === "light"
-          ? theme.palette.grey[100]
-          : theme.palette.grey[600],
+      color: theme.palette.mode === "light" ? theme.palette.grey[100] : theme.palette.grey[600],
     },
     "&.Mui-disabled + .MuiSwitch-track": {
       opacity: theme.palette.mode === "light" ? 0.7 : 0.3,

@@ -2,17 +2,17 @@ import React from "react";
 import Container from "@mui/material/Container";
 import { Route, Routes } from "react-router-dom";
 
+import { useDispatch } from "react-redux";
+import { ToastContainer } from "react-toastify";
 import { Header, Modal } from "./components";
 import { GetAuth, Home, Login, Registration } from "./pages";
 import { Layout } from "./pages/Layout/Layout";
 
-import { ToastContainer } from "react-toastify";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { Role } from "./components/interfaces/auth/IAuth";
-import { useDispatch } from "react-redux";
 import { fetchAuth } from "./redux/slices/user/user";
 
-function App() {
+const App = () => {
   const dispatch = useDispatch<any>();
 
   React.useEffect(() => {
@@ -55,6 +55,6 @@ function App() {
       </Container>
     </>
   );
-}
+};
 
 export default App;

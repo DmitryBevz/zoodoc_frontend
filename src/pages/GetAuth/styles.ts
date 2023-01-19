@@ -21,7 +21,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
   link: {
     color: "inherit",
     textDecoration: "none",
-    border: "none"
+    border: "none",
   },
   greenSideBigIcon: {
     position: "absolute",

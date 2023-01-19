@@ -25,5 +25,5 @@ export const useStyles = makeStyles({
   connectDialogContent: {
     display: "flex",
     flexDirection: "column",
-  }
+  },
 });

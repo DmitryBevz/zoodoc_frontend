@@ -15,7 +15,8 @@ export const Header = () => {
   const styles = useStyles();
   const [open, setOpen] = React.useState(false);
   const location = useLocation();
-  const urlPath = location.pathname === "/sign-in" || location.pathname === "/login" || location.pathname === "/register";
+  const urlPath =
+    location.pathname === "/sign-in" || location.pathname === "/login" || location.pathname === "/register";
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -32,19 +33,16 @@ export const Header = () => {
           <IconButton className={styles.drawerItem} onClick={handleDrawerOpen}>
             <MenuIcon />
           </IconButton>
-          <Drawer
-            open={open}
-            anchor="left"
-            onClose={handleDrawerClose}
-            transitionDuration={600}
-          >
+          <Drawer open={open} anchor="left" onClose={handleDrawerClose} transitionDuration={600}>
             <MenuItem className={styles.root} onClick={handleDrawerClose}>
               <SideMenu />
             </MenuItem>
           </Drawer>
 
           {urlPath ? (
-            <Link className={styles.mailLabel} to="/">ZooDoc</Link>
+            <Link className={styles.mailLabel} to="/">
+              ZooDoc
+            </Link>
           ) : (
             <Link className={styles.logo} to="/">
               <Box className={styles.logoText}>ZooDoc</Box>

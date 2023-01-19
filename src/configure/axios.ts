@@ -13,6 +13,7 @@ axiosInstance.interceptors.response.use(
     if (statusCode) {
       return response;
     }
+    return null;
   },
   (error) => {
     const statusCode = checkStatusCode(error.response.status);
@@ -23,9 +24,7 @@ axiosInstance.interceptors.response.use(
 );
 
 axiosInstance.interceptors.request.use((config: any) => {
-  config.headers.Authorization = `Bearer ${window.localStorage.getItem(
-    "zoodocToken"
-  )}`;
+  config.headers.Authorization = `Bearer ${window.localStorage.getItem("zoodocToken")}`;
 
   return config;
 });

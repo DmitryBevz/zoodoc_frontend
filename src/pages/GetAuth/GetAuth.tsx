@@ -106,26 +106,14 @@ export const GetAuth = () => {
             <b>Знайдіть потрібний вет. центр зараз!</b>
           </Typography>
           <Link to="/register" className={styles.link}>
-            <Button
-              variant="outlined"
-              color="primary"
-              size="large"
-              fullWidth
-              className={styles.loginSideBtn}
-            >
+            <Button variant="outlined" color="primary" size="large" fullWidth className={styles.loginSideBtn}>
               <Typography>Реєстрація</Typography>
             </Button>
           </Link>
           <Link to="/login" className={styles.link}>
-          <Button
-            variant="contained"
-            color="primary"
-            size="large"
-            fullWidth
-            className={styles.loginSideBtn}
-          >
-            <Typography color="white">Увійти</Typography>
-          </Button>
+            <Button variant="contained" color="primary" size="large" fullWidth className={styles.loginSideBtn}>
+              <Typography color="white">Увійти</Typography>
+            </Button>
           </Link>
 
           <Box className={styles.socialBtnsBlock}>

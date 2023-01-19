@@ -6,9 +6,9 @@ import { ModalParamsState } from "./types/modal";
 import { userReducer } from "./slices/user/user";
 
 export interface IStore {
-  user: IAuthStateProps,
-  auth: IAuthStateProps,
-  modal: ModalParamsState,
+  user: IAuthStateProps;
+  auth: IAuthStateProps;
+  modal: ModalParamsState;
 }
 
 const store = configureStore<IStore>({
@@ -17,7 +17,7 @@ const store = configureStore<IStore>({
     auth: authReducer,
     modal: modalReducer,
   },
-    devTools: true,
+  devTools: true,
 });
 
 export default store;

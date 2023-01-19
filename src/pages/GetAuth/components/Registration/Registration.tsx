@@ -3,21 +3,12 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
-import {
-  Avatar,
-  Box,
-  Button,
-  Paper,
-  TextField,
-  Typography,
-  Tabs,
-  Tab,
-} from "@mui/material";
+import { Avatar, Box, Button, Paper, TextField, Typography, Tabs, Tab } from "@mui/material";
 import MedicalServicesOutlinedIcon from "@mui/icons-material/MedicalServicesOutlined";
 import PetsOutlinedIcon from "@mui/icons-material/PetsOutlined";
 
-import { setRegister } from "../../../../redux/slices/auth/auth";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { setRegister } from "../../../../redux/slices/auth/auth";
 import { registrationSchema } from "../../../../components/validation/schemas/auth/registrationSchema";
 import { IUserRegisterData } from "../../../../components/interfaces/auth/IAuth";
 import { useToast } from "../../../../hooks/useToast";
@@ -40,7 +31,7 @@ export const Registration = () => {
     formState: { errors, isValid },
   } = useForm<IUserRegisterData>({
     defaultValues: {
-      role: role,
+      role,
       firstName: "",
       lastName: "",
       email: "",
@@ -73,16 +64,8 @@ export const Registration = () => {
         <form className={styles.registerForm} onSubmit={handleSubmit(onSubmit)}>
           <Box className={styles.roleBlock}>
             <Tabs value={role} onChange={handleChangeRole}>
-              <Tab
-                icon={<MedicalServicesOutlinedIcon />}
-                label="ЛІКАР"
-                {...register("role")}
-              />
-              <Tab
-                icon={<PetsOutlinedIcon />}
-                label="ПАЦІЄНТ"
-                {...register("role")}
-              />
+              <Tab icon={<MedicalServicesOutlinedIcon />} label="ЛІКАР" {...register("role")} />
+              <Tab icon={<PetsOutlinedIcon />} label="ПАЦІЄНТ" {...register("role")} />
             </Tabs>
           </Box>
           <TextField
@@ -122,13 +105,7 @@ export const Registration = () => {
             helperText={errors.password?.message}
             {...register("password")}
           />
-          <Button
-            disabled={!isValid}
-            type="submit"
-            size="large"
-            variant="contained"
-            fullWidth
-          >
+          <Button disabled={!isValid} type="submit" size="large" variant="contained" fullWidth>
             <Typography color="white">Створити акаунт</Typography>
           </Button>
         </form>
