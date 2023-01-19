@@ -9,11 +9,11 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
-import {PopoverOrigin, Typography } from "@mui/material";
-import {props, useStyles} from "./styles"
+import { PopoverOrigin, Typography } from "@mui/material";
+import { props, useStyles } from "./styles";
 
 export const CreatePost = () => {
-  const styles = useStyles()
+  const styles = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: any) => {
@@ -35,7 +35,7 @@ export const CreatePost = () => {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <AddCircleOutlineOutlinedIcon className={styles.addCircleIcon}/>
+            <AddCircleOutlineOutlinedIcon className={styles.addCircleIcon} />
           </IconButton>
         </Tooltip>
       </Box>
@@ -50,21 +50,19 @@ export const CreatePost = () => {
         anchorOrigin={props.anchorOrigin as PopoverOrigin}
       >
         <MenuItem className={styles.menuItem}>
-          <Link
-            to="/add-post"
-            className={styles.addLink}
-          >
+          <Link to="/add-post" className={styles.addLink}>
             <PostAddOutlinedIcon />
-            <Typography component="span" className={styles.addBtn}>Створити пост</Typography>
+            <Typography component="span" className={styles.addBtn}>
+              Створити пост
+            </Typography>
           </Link>
         </MenuItem>
         <MenuItem className={styles.menuItem}>
-          <Link
-            to="/add-car"
-            className={styles.addLink}
-          >
+          <Link to="/add-car" className={styles.addLink}>
             <NoCrashOutlinedIcon />
-            <Typography component="span" className={styles.addBtn}>Додати авто</Typography>
+            <Typography component="span" className={styles.addBtn}>
+              Додати авто
+            </Typography>
           </Link>
         </MenuItem>
       </Menu>

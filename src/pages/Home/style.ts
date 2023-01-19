@@ -7,10 +7,10 @@ export const useStyles = makeStyles((theme: Theme) => ({
     alignItems: "center",
     flex: 1,
     padding: "8px 15px 24px 15px",
-    "&.MuiPaper-root":{
+    "&.MuiPaper-root": {
       border: "none",
       backgroundColor: "#f5f5f5",
-    }
+    },
   },
   postsHeaderContent: {
     display: "flex",

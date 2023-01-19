@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
 
 import { NoPost } from "./components/noPost/NoPost";
 
-import blog from "../../assets/img/blog.png"
+import blog from "../../assets/img/blog.png";
 import { useStyles } from "./style";
 import { selectUserData } from "../../redux/slices/user/selectors/userSelectors";
 
@@ -26,20 +26,16 @@ export const Home = () => {
   };
 
   return (
-    <>
-      <Paper variant="outlined" className={styles.postsHeader}>
-        <Box className={styles.postsHeaderContent} style={{ marginTop: -6 }}>
-          <Typography className={styles.label}>Новини</Typography>
-          <TabContext value={tabValue}>
-            <TabList onChange={handleChangeTab}>
-              <Tab label="Усі" value="all" />
-              <Tab label="Популярні" value="popular" />
-            </TabList>
-          </TabContext>
-        </Box>
-      </Paper>
-      
-      
-    </>
+    <Paper variant="outlined" className={styles.postsHeader}>
+      <Box className={styles.postsHeaderContent} style={{ marginTop: -6 }}>
+        <Typography className={styles.label}>Новини</Typography>
+        <TabContext value={tabValue}>
+          <TabList onChange={handleChangeTab}>
+            <Tab label="Усі" value="all" />
+            <Tab label="Популярні" value="popular" />
+          </TabList>
+        </TabContext>
+      </Box>
+    </Paper>
   );
 };

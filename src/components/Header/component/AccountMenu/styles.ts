@@ -1,64 +1,63 @@
-import {makeStyles} from "@mui/styles";
+import { makeStyles } from "@mui/styles";
 
 export const useStyles = makeStyles({
-    root: {
-        display: "flex",
-        alignItems: "center",
-        textAlign: "center",
-    },
+  root: {
+    display: "flex",
+    alignItems: "center",
+    textAlign: "center",
+  },
 
-    iconButton: {
-        marginLeft: 2,
-    },
+  iconButton: {
+    marginLeft: 2,
+  },
 
-    avatar: {
-        width: 32,
-        height: 32,
-    },
+  avatar: {
+    width: 32,
+    height: 32,
+  },
 
-    link: {
-        textDecoration: "none",
-        color: "inherit",
-        display: "flex",
-        alignItems: "center",
-    },
-
-})
+  link: {
+    textDecoration: "none",
+    color: "inherit",
+    display: "flex",
+    alignItems: "center",
+  },
+});
 
 export const props = {
-    paperProps: {
-        elevation: 0,
-        sx: {
-            overflow: "visible",
-            filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-            marginTop: 1.5,
-            "& .MuiAvatar-root": {
-                width: 32,
-                height: 32,
-                marginLeft: -0.5,
-                marginRight: 1,
-            },
-            "&:before": {
-                content: '""',
-                display: "block",
-                position: "absolute",
-                top: 0,
-                right: 14,
-                width: 10,
-                height: 10,
-                backgroundColor: "background.paper",
-                transform: "translateY(-50%) rotate(45deg)",
-                zIndex: 0,
-            },
-        },
+  paperProps: {
+    elevation: 0,
+    sx: {
+      overflow: "visible",
+      filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+      marginTop: 1.5,
+      "& .MuiAvatar-root": {
+        width: 32,
+        height: 32,
+        marginLeft: -0.5,
+        marginRight: 1,
+      },
+      "&:before": {
+        content: '""',
+        display: "block",
+        position: "absolute",
+        top: 0,
+        right: 14,
+        width: 10,
+        height: 10,
+        backgroundColor: "background.paper",
+        transform: "translateY(-50%) rotate(45deg)",
+        zIndex: 0,
+      },
     },
-    transformOriginProps: {
-        horizontal: "right",
-        vertical: "top",
-    },
+  },
+  transformOriginProps: {
+    horizontal: "right",
+    vertical: "top",
+  },
 
-    anchorOrigin: {
-        horizontal: "right",
-        vertical: "bottom",
-    },
-}
+  anchorOrigin: {
+    horizontal: "right",
+    vertical: "bottom",
+  },
+};

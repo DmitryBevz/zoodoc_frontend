@@ -1,16 +1,16 @@
-export interface ModalParams {
-  onSubmit?: (params: any) => void;
-  onCancel?: (params: any) => void;
-  onClickFollow?: (params:any) => void;
-  type: ModalType;
-  payload?: any;
-}
-
 export enum ModalType {
   Logout = "Logout",
   UpdateUserData = "UpdateUserData",
   DeleteUser = "DeleteUser",
-  Error = "Error"
+  Error = "Error",
+}
+
+export interface ModalParams {
+  onSubmit?: (params: any) => void;
+  onCancel?: (params: any) => void;
+  onClickFollow?: (params: any) => void;
+  type: ModalType;
+  payload?: any;
 }
 
 export interface ModalState extends ModalParams {
@@ -18,5 +18,5 @@ export interface ModalState extends ModalParams {
 }
 
 export type ModalParamsState = {
-    [keys in ModalType]?: ModalState;
+  [keys in ModalType]?: ModalState;
 };

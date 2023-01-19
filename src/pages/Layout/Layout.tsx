@@ -3,16 +3,16 @@ import { Outlet } from "react-router-dom";
 
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-import { SideMenu, Footer} from "../../components";
+import { SideMenu, Footer } from "../../components";
 
 import { useStyles } from "./styles";
 
 export const Layout = () => {
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <Container maxWidth="lg">
-      <Grid style={{justifyContent: "center"}} container spacing={3}>
+      <Grid style={{ justifyContent: "center" }} container spacing={3}>
         <Grid className={styles.sideBar} sm={1} md={2} item>
           <SideMenu />
         </Grid>
@@ -20,7 +20,7 @@ export const Layout = () => {
           <Outlet />
         </Grid>
         <Grid className={styles.tagsBlock} sm={1} md={3} item>
-          <Footer/>
+          <Footer />
         </Grid>
       </Grid>
     </Container>

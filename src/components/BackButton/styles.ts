@@ -6,10 +6,10 @@ export const useStyles = makeStyles({
     alignItems: "center",
     flex: 1,
     padding: "0px 0px 10px",
-    "&.MuiPaper-root":{
+    "&.MuiPaper-root": {
       border: "none",
       backgroundColor: "#f5f5f5",
-    }
+    },
   },
 
   iconButton: {

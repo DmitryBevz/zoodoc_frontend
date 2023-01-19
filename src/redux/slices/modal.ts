@@ -1,28 +1,15 @@
 import { createAction, createSlice, SliceCaseReducers } from "@reduxjs/toolkit";
+import { keys } from "lodash";
 import { IStore } from "../store";
 import { ModalParams, ModalParamsState, ModalType } from "../types/modal";
-import { keys } from "lodash";
 
-export const openModal = createAction(
-  "modal/open",
-  (modalParams: ModalParams) => {
-    return { payload: modalParams };
-  }
-);
+export const openModal = createAction("modal/open", (modalParams: ModalParams) => ({ payload: modalParams }));
 
-export const closeModal = createAction(
-  "modal/close",
-  (modalType: ModalType) => {
-    return { payload: modalType };
-  }
-);
+export const closeModal = createAction("modal/close", (modalType: ModalType) => ({ payload: modalType }));
 
 const initialState = {};
 
-const modalSlice = createSlice<
-  ModalParamsState,
-  SliceCaseReducers<ModalParamsState>
->({
+const modalSlice = createSlice<ModalParamsState, SliceCaseReducers<ModalParamsState>>({
   name: "modal",
   initialState,
   reducers: {},
@@ -37,11 +24,8 @@ const modalSlice = createSlice<
   },
 });
 
-export const selectModalState = (type: ModalType) => (state: IStore) =>
-  state.modal[type];
+export const selectModalState = (type: ModalType) => (state: IStore) => state.modal[type];
 export const selectOpenModalState = (state: IStore) =>
-  keys(state.modal).find(
-    (x) => state.modal[x as keyof ModalParamsState]?.isOpen ?? false
-  ) as keyof ModalParamsState;
+  keys(state.modal).find((x) => state.modal[x as keyof ModalParamsState]?.isOpen ?? false) as keyof ModalParamsState;
 
 export const modalReducer = modalSlice.reducer;

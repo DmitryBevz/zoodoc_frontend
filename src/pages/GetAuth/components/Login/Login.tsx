@@ -8,9 +8,9 @@ import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 
+import { yupResolver } from "@hookform/resolvers/yup";
 import { setLogin } from "../../../../redux/slices/auth/auth";
 import { IUserLoginData } from "../../../../components/interfaces/auth/IAuth";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../../../../components/validation/schemas/auth/loginSchema";
 import { closeModal, openModal } from "../../../../redux/slices/modal";
 import { ModalType } from "../../../../redux/types/modal";
@@ -43,9 +43,7 @@ export const Login = () => {
         openModal({
           type: ModalType.Error,
           payload: {
-            errors: [
-              { msg: "Перевірте правильність введеної пошти та пароля" },
-            ],
+            errors: [{ msg: "Перевірте правильність введеної пошти та пароля" }],
           },
           onCancel: () => {
             dispatch(closeModal(ModalType.Error));
@@ -58,9 +56,6 @@ export const Login = () => {
       window.localStorage.setItem("zoodocToken", data.payload.token);
     }
   };
-
-  console.log(isAuth);
-  
 
   if (isAuth) {
     return <Navigate to="/" />;
@@ -90,13 +85,7 @@ export const Login = () => {
           {...register("password")}
           fullWidth
         />
-        <Button
-          disabled={!isValid}
-          type="submit"
-          size="large"
-          variant="contained"
-          fullWidth
-        >
+        <Button disabled={!isValid} type="submit" size="large" variant="contained" fullWidth>
           <Typography color="white">Увійти</Typography>
         </Button>
       </form>

@@ -1,4 +1,4 @@
-import {makeStyles} from "@mui/styles";
+import { makeStyles } from "@mui/styles";
 
 export const useStyles = makeStyles({
   sideBar: {
@@ -57,17 +57,17 @@ export const useStyles = makeStyles({
 
   byAuto: {
     fontWeight: 300,
-    "&.MuiTypography-root":{
+    "&.MuiTypography-root": {
       fontSize: "12px",
-    }
+    },
   },
 
   sideMenuListItemLabel: {
     fontWeight: 300,
-    "&.MuiTypography-root":{
+    "&.MuiTypography-root": {
       fontSize: "12px",
       marginLeft: "10px",
-    }
+    },
   },
 
   listItemBlock: {

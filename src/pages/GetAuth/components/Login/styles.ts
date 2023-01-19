@@ -11,13 +11,13 @@ export const useStyles = makeStyles((theme: Theme) => ({
       boxShadow: "3px 3px 3px #dedede",
       borderRadius: 12,
       margin: "50px auto",
-    }
+    },
   },
 
   field: {
-    "&.MuiTextField-root":{
+    "&.MuiTextField-root": {
       marginBottom: "20px",
-    }
+    },
   },
 
   title: {

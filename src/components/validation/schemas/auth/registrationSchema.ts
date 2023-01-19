@@ -1,12 +1,5 @@
 import * as yup from "yup";
-import {
-  emailField,
-  fullNameField,
-  lastNameField,
-  passwordField,
-  phoneNumberField,
-  role,
-} from "../../yupFields";
+import { emailField, fullNameField, lastNameField, passwordField, phoneNumberField, role } from "../../yupFields";
 
 export const registrationSchema = yup.object().shape({
   role: role.required(),
